@@ -6,6 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import { CalendarIcon, MessageCircle, PenIcon } from "lucide-react";
 import { assets } from "../assets/assets";
 import { useAuth, useUser } from "@clerk/clerk-react";
+import api from "../configs/api";
 
 const TaskDetails = () => {
 
