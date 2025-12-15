@@ -15,10 +15,10 @@ export const fetchWorkspaces = createAsyncThunk('workspace/fetchWorkspaces', asy
 })
 
 const initialState = {
-    // workspaces: dummyWorkspaces || [],
-    workspaces: [],
-    // currentWorkspace: dummyWorkspaces[1],
-    currentWorkspace: null,
+    workspaces: dummyWorkspaces || [],
+    // workspaces: [],
+    currentWorkspace: dummyWorkspaces[1],
+    // currentWorkspace: null,
     loading: false,
 };
 
@@ -147,5 +147,5 @@ const workspaceSlice = createSlice({
     }
 });
 
-export const { setWorkspaces, setCurrentWorkspace, addWorkspace, updateWorkspace, deleteWorkspace, addProject, addTask, updateTask, deleteTask } = workspaceSlice.actions;
+            export const { setWorkspaces, setCurrentWorkspace, addWorkspace, updateWorkspace, deleteWorkspace, addProject, addTask, updateTask, deleteTask } = workspaceSlice.actions;
 export default workspaceSlice.reducer;

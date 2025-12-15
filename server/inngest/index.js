@@ -199,7 +199,7 @@ const sendTaskAssignmentEmail = inngest.createFunction(
                <strong>Description:</strong>${task.description}</p>
                </div>
                <p style="margin: 6px 0;">
-               <strong>Due Date:</strong> ${new Date(task.due_date).toLocaleDateString()}</p>
+               <strong>:</strong> ${new Date(task.due_date).toLocaleDateString()}</p>
                 </div>
                 
                <a href="${origin}" style="background-color:#007bff;padding:12px 24px; border-radius: 5px; color:#fff;
@@ -208,7 +208,7 @@ const sendTaskAssignmentEmail = inngest.createFunction(
                 </a>
 
                 <p style="margin-top: 20px; font-size: 14px; color:#6c757d;">
-                Please make sure to review and complete it before the due date.
+                Please make sure to review and complete it before the .
                 </p>
                 </div>`
                         })

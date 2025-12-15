@@ -26,57 +26,37 @@ export default function ProjectSettings({ project }) {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  toast.loading("Saving...");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        toast.loading("Saving...");
 
-  try {
-    if (!project?.id && !formData.id) {
-      throw new Error("Project id missing on client");
-    }
+        try {
+            if (!project?.id && !formData.id) {
+                throw new Error("Project id missing on client");
+            }
 
-    const projectId = formData.id || project.id;
+            const projectId = formData.id || project.id;
 
-    const { data } = await api.put(`/api/projects/${projectId}`, formData, {
-      headers: {
-        Authorization: `Bearer ${await getToken()}`
-      }
-    });
+            const { data } = await api.put(`/api/projects/${projectId}`, formData, {
+                headers: {
+                    Authorization: `Bearer ${await getToken()}`
+                }
+            });
 
-    setIsDialogOpen(false);
-    dispatch(fetchWorkspaces({ getToken }));
-    toast.dismissAll();
-    toast.success(data.message);
-  } catch (error) {
-    toast.dismissAll();
-    toast.error(error?.response?.data?.message || error.message);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+            setIsDialogOpen(false);
+            dispatch(fetchWorkspaces({ getToken }));
+            toast.dismissAll();
+            toast.success(data.message);
+        } catch (error) {
+            toast.dismissAll();
+            toast.error(error?.response?.data?.message || error.message);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setIsSubmitting(true)
-    //     toast.loading("Saving...")
-    //     try {
-    //         const { data } = await api.put('/api/projects', formData, {
-    //             headers: {
-    //                 Authorization: `Bearer ${await getToken()}`
-    //             }
-    //         })
-    //         setIsDialogOpen(false)
-    //         dispatch(fetchWorkspaces({ getToken }))
-    //         toast.dismissAll();
-    //         toast.success(data.message)
-    //     } catch (error) {
-    //         toast.dismissAll();
-    //         toast.error(error?.response?.data?.message || error.message)
-    //     } finally {
-    //         setIsSubmitting(false)
-    //     }
-    // };
+
     useEffect(() => {
         if (project) setFormData(project);
     }, [project]);
